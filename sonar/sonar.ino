@@ -1,11 +1,15 @@
 #include <LiquidCrystal.h>
+
+// Połączenia dla DFRobot LCD Keypad Shield
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
+// Podłączenia ultradźwiękowego czujnika odległości US-015
 #define TRIGGER_PIN    0
 #define ECHO_PIN       1
 
+// Podłączenie Buzzera
 #define SPEAKER_OUT 11
-#define FREQUENCY   50
+#define FREQUENCY   100
 
 long delay_in_ms;
 
@@ -13,7 +17,6 @@ void setup() {
   lcd.begin(16, 2);
   lcd.print("Sonar (range 4m)");
   delay_in_ms = 1000;
-  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
@@ -24,9 +27,7 @@ void loop() {
     lcd.print(distance);
     lcd.print("cm  ");
     delay_in_ms = 3 * distance;
-    digitalWrite(LED_BUILTIN, HIGH);
     sound(50);
-    digitalWrite(LED_BUILTIN, LOW);
     delay(delay_in_ms);
   }
   else
