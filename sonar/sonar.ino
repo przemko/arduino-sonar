@@ -1,6 +1,6 @@
 #include <LiquidCrystal.h>
 
-// Połączenia dla DFRobot LCD Keypad Shield
+// Podłączenia DFRobot LCD Keypad Shield
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
 // Podłączenia ultradźwiękowego czujnika odległości US-015
@@ -22,7 +22,7 @@ void setup() {
 void loop() {
   long distance = distance_in_cm();
   lcd.setCursor(0, 1);
-  if(distance <= 400) 
+  if (distance <= 400)
   {
     lcd.print(distance);
     lcd.print("cm  ");
@@ -50,7 +50,7 @@ long distance_in_cm() {
   digitalWrite(TRIGGER_PIN, LOW);
 
   pinMode(ECHO_PIN, INPUT);
-  
+
   return  pulseIn(ECHO_PIN, HIGH) / 29 / 2 ;
 }
 
